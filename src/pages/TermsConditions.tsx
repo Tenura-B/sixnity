@@ -3,9 +3,43 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { motion } from 'motion/react';
+import { useState, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'motion/react';
 
-const TermsSection = () => {
+const Hero = () => {
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 500], [0, 100]);
+
+  return (
+    <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-black">
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#90b63d20_0%,_transparent_70%)] opacity-20" />
+        <div className="h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
+      </div>
+
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 text-center px-6 max-w-4xl"
+        style={{ y: y1 }}
+      >
+        <span className="inline-block text-sixnity text-sm md:text-base font-black uppercase tracking-[0.3em] mb-6">
+          Terms of Service
+        </span>
+        <h1 className="text-4xl md:text-6xl font-black leading-none tracking-normal mb-8">
+          Terms & <span className="text-sixnity">Conditions</span>
+        </h1>
+        <p className="text-lg md:text-xl text-white/50 font-medium max-w-2xl mx-auto mb-10 leading-relaxed italic">
+          Agreement for Elite Performance and Member Responsibility.
+        </p>
+        <p className="text-xs md:text-base font-black uppercase tracking-widest text-white/30">Last updated: May 7, 2026</p>
+      </motion.div>
+    </section>
+  );
+};
+
+const TermsContent = () => {
   const terms = [
     { title: 'Use of Service', content: 'You must be at least 18 years of age to use the Sixnity platform. You agree to provide accurate information and maintain the security of your access credentials.' },
     { title: 'Health Disclaimer', content: 'Sixnity is not a medical organization. You should consult with a physician before beginning any exercise program. You voluntarily assume all risks associated with physical activity.' },
@@ -22,20 +56,8 @@ const TermsSection = () => {
   ];
 
   return (
-    <section id="terms" className="py-24 bg-black text-white min-h-screen pt-40 overflow-hidden">
+    <section id="terms" className="py-24 bg-black text-white min-h-screen overflow-hidden border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6 relative">
-        <header className="mb-20">
-          <motion.div
-            initial={{ opacity: 0, scaleX: 0 }}
-            whileInView={{ opacity: 1, scaleX: 1 }}
-            viewport={{ once: true }}
-            className="w-full h-px bg-sixnity/30 mb-12 origin-left"
-          />
-          <h2 className="text-4xl md:text-6xl mb-4">Terms & Conditions</h2>
-          <p className="text-sixnity font-black uppercase tracking-widest text-sm">Agreement for Elite Performance</p>
-          <p className="text-white/40 mt-6 text-sm italic">Last updated: May 7, 2026</p>
-        </header>
-
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10">
           {terms.map((term, idx) => (
             <motion.div 
@@ -46,7 +68,7 @@ const TermsSection = () => {
               transition={{ delay: idx * 0.05 }}
               className="p-12 bg-black hover:bg-white/5 transition-colors group relative border-r border-b border-white/10 last:border-r-0"
             >
-              <span className="absolute top-4 right-4 text-xs font-black text-white/10 group-hover:text-sixnity transition-colors">[ {String(idx + 1).padStart(2, '0')} ]</span>
+              <span className="absolute top-4 right-4 text-xs md:text-base font-black text-white/10 group-hover:text-sixnity transition-colors">[ {String(idx + 1).padStart(2, '0')} ]</span>
               <h3 className="text-xl mb-6 text-white group-hover:text-sixnity transition-colors">{term.title}</h3>
               <p className="text-white/50 leading-relaxed font-light">{term.content}</p>
             </motion.div>
@@ -68,5 +90,11 @@ const TermsSection = () => {
 };
 
 export default function TermsConditions() {
-  return <TermsSection />;
+  return (
+    <>
+      <Hero />
+      <TermsContent />
+    </>
+  );
 }
+

@@ -4,6 +4,7 @@
  */
 
 import { useState, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { 
   CheckCircle2, 
   Activity, 
@@ -12,7 +13,40 @@ import {
   ArrowRight 
 } from 'lucide-react';
 
-const PrivacySection = () => {
+const Hero = () => {
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 500], [0, 100]);
+
+  return (
+    <section className="relative h-[70vh] flex items-center justify-center overflow-hidden bg-black">
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-sixnity)_0%,_transparent_70%)] opacity-20" />
+        <div className="h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
+      </div>
+
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 text-center px-6 max-w-4xl"
+        style={{ y: y1 }}
+      >
+        <span className="inline-block text-sixnity text-sm md:text-base font-black uppercase tracking-[0.3em] mb-6">
+          Legal Foundation
+        </span>
+        <h1 className="text-4xl md:text-6xl font-black leading-none tracking-normal mb-8">
+          Privacy <span className="text-sixnity">Policy</span>
+        </h1>
+        <p className="text-lg md:text-xl text-white/50 font-medium max-w-2xl mx-auto mb-10 leading-relaxed italic">
+          Everything you need to know about how Sixnity protects your data and manages your privacy.
+        </p>
+        <p className="text-xs md:text-base font-black uppercase tracking-widest text-white/30">Last updated: May 7, 2026</p>
+      </motion.div>
+    </section>
+  );
+};
+
+const PrivacyContent = () => {
   const sections = [
     { title: 'Information We Collect', id: 'collect' },
     { title: 'How We Use Information', id: 'use' },
@@ -50,19 +84,19 @@ const PrivacySection = () => {
   }, []);
 
   return (
-    <section id="privacy" className="py-24 bg-white text-black min-h-screen pt-40">
+    <section id="privacy" className="py-24 bg-white text-black min-h-screen">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-16">
           {/* Sticky Nav */}
           <aside className="lg:w-1/4 hidden lg:block">
             <div className="sticky top-40">
-              <h4 className="text-xs font-black uppercase tracking-widest text-black/30 mb-8">Privacy Contents</h4>
+              <h4 className="text-xs md:text-base font-black uppercase tracking-widest text-black/30 mb-8">Privacy Contents</h4>
               <nav className="space-y-4">
                 {sections.map(s => (
                   <a 
                     key={s.id} 
                     href={`#${s.id}`}
-                    className={`block text-sm font-bold transition-all ${activeSection === s.id ? 'text-sixnity translate-x-2' : 'text-black/40 hover:text-black hover:translate-x-1'}`}
+                    className={`block text-sm md:text-base font-bold transition-all ${activeSection === s.id ? 'text-sixnity translate-x-2' : 'text-black/40 hover:text-black hover:translate-x-1'}`}
                   >
                     {s.title}
                   </a>
@@ -73,11 +107,6 @@ const PrivacySection = () => {
 
           {/* Content */}
           <div className="lg:w-3/4 space-y-24">
-            <header className="mb-12">
-              <h2 className="text-4xl md:text-5xl mb-6 text-black">Privacy Policy</h2>
-              <p className="text-black/50 max-w-2xl italic">Last updated: May 7, 2026</p>
-            </header>
-
             <div id="collect" className="scroll-mt-40">
               <h3 className="text-2xl mb-6 flex items-center gap-3 text-sixnity">
                 <CheckCircle2 size={24} /> 01. Information We Collect
@@ -188,5 +217,11 @@ const PrivacySection = () => {
 };
 
 export default function PrivacyPolicy() {
-  return <PrivacySection />;
+  return (
+    <>
+      <Hero />
+      <PrivacyContent />
+    </>
+  );
 }
+

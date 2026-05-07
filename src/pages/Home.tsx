@@ -4,14 +4,14 @@
  */
 
 import { motion, useScroll, useTransform } from 'motion/react';
-import { 
-  ChevronRight, 
-  Activity, 
-  BarChart3, 
-  Users, 
-  Calendar, 
-  MessageSquare, 
-  Smartphone 
+import {
+  ChevronRight,
+  Activity,
+  BarChart3,
+  Users,
+  Calendar,
+  MessageSquare,
+  Smartphone
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -35,18 +35,18 @@ const Hero = () => {
         <div className="h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
       </div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         className="relative z-10 text-center px-6 max-w-4xl"
         style={{ y: y1 }}
       >
-        <span className="inline-block text-sixnity text-sm font-black uppercase tracking-[0.3em] mb-6">
+        <span className="inline-block text-sixnity text-sm md:text-base font-black uppercase tracking-[0.3em] mb-6">
           Premium Fitness Ecosystem
         </span>
-        <h1 className="text-5xl md:text-8xl font-black leading-none mb-8">
-          Privacy, Terms <br /> & Member <span className="text-sixnity">Trust</span>
+        <h1 className="text-4xl md:text-6xl font-black leading-none tracking-normal mb-8">
+          Privacy & <span className="text-sixnity">Policy</span>
         </h1>
         <p className="text-lg md:text-xl text-white/50 font-medium max-w-2xl mx-auto mb-10 leading-relaxed">
           Everything you need to know about how Sixnity protects your data, manages memberships, and supports your fitness journey.
@@ -70,16 +70,16 @@ const AboutSection = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-start mb-24">
           <motion.div
-             initial={{ opacity: 0, x: -30 }}
-             whileInView={{ opacity: 1, x: 0 }}
-             viewport={{ once: true }}
-             transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
           >
             <div className="accent-line mb-8" />
             <h2 className="text-4xl md:text-6xl mb-6">Built for <br /> the Disciplined</h2>
-            <p className="text-sixnity font-black uppercase tracking-widest text-sm italic">Forged in Consistency</p>
+            <p className="text-sixnity font-black uppercase tracking-widest text-sm md:text-base italic">Forged in Consistency</p>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}

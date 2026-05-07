@@ -47,13 +47,13 @@ export const Navbar = () => {
               key={item.name} 
               to={item.href} 
               onClick={(e) => handleHashLink(e, item.href)}
-              className="text-xs font-bold uppercase tracking-widest text-white/70 hover:text-sixnity transition-colors"
+              className="text-xs md:text-base font-bold uppercase tracking-widest text-white/70 hover:text-sixnity transition-colors"
             >
               {item.name}
             </Link>
           ))}
         </div>
-        <Link to="/terms" className="hidden md:block bg-sixnity text-black px-6 py-2 text-xs font-black uppercase tracking-tighter hover:bg-white transition-all">
+        <Link to="/terms" className="hidden md:block bg-sixnity text-black px-6 py-2 text-base font-black uppercase tracking-tighter hover:bg-white transition-all">
           Get Started
         </Link>
       </div>

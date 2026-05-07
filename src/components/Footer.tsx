@@ -20,8 +20,8 @@ export const Footer = () => {
           </div>
           
           <div>
-            <h5 className="text-xs font-black uppercase tracking-widest text-sixnity mb-8">Navigation</h5>
-            <ul className="space-y-4 text-sm font-bold text-white/70">
+            <h5 className="text-xs md:text-base font-black uppercase tracking-widest text-sixnity mb-8">Navigation</h5>
+            <ul className="space-y-4 text-sm md:text-base font-bold text-white/70">
               <li><Link to="/#about" className="hover:text-sixnity">About Us</Link></li>
               <li><Link to="/privacy" className="hover:text-sixnity">Privacy Policy</Link></li>
               <li><Link to="/terms" className="hover:text-sixnity">Terms of Service</Link></li>
@@ -30,8 +30,8 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h5 className="text-xs font-black uppercase tracking-widest text-sixnity mb-8">Connect</h5>
-            <ul className="space-y-4 text-sm font-bold text-white/70">
+            <h5 className="text-xs md:text-base font-black uppercase tracking-widest text-sixnity mb-8">Connect</h5>
+            <ul className="space-y-4 text-sm md:text-base font-bold text-white/70">
               <li><a href="#" className="hover:text-sixnity">Instagram</a></li>
               <li><a href="#" className="hover:text-sixnity">Twitter</a></li>
               <li><a href="#" className="hover:text-sixnity">LinkedIn</a></li>
@@ -40,7 +40,7 @@ export const Footer = () => {
           </div>
         </div>
         
-        <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-black uppercase tracking-[0.2em] text-white/30">
+        <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] md:text-base font-black uppercase tracking-[0.2em] text-white/30">
           <p>© 2026 SIXNITY ECOSYSTEM. ALL RIGHTS RESERVED.</p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-sixnity">System Status</a>
