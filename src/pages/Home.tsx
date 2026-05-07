@@ -46,7 +46,7 @@ const Hero = () => {
           Premium Fitness Ecosystem
         </span>
         <h1 className="text-4xl md:text-6xl font-black leading-none tracking-normal mb-8">
-          Privacy & <span className="text-sixnity">Policy</span>
+          Privacy & <span className="text-sixnity">Terms</span>
         </h1>
         <p className="text-lg md:text-xl text-white/50 font-medium max-w-2xl mx-auto mb-10 leading-relaxed">
           Everything you need to know about how Sixnity protects your data, manages memberships, and supports your fitness journey.
